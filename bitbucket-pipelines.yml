@@ -1,7 +1,8 @@
-image: node:latest
 pipelines:
-  branches:
-    master:
+  default:
       - step:
           script:
-            - s3 --region "ap-south-1" rm s3://myreact-s3
+            - apt-get updmain:ate && apt-get install -y python3-pip 
+            - pip3 install -U awscli 
+            - aws --version
+            -  s3 --region "ap-south-1" rm s3://myreact-s3
