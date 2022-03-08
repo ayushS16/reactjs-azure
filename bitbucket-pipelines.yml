@@ -6,7 +6,7 @@ pipelines:
   default:
       - step:
           script:
-            - apt-get updmain:ate && apt-get install -y python3-pip 
+            - apt-get update && apt-get install -y python3-pip 
             - pip3 install -U awscli 
             - aws --version
             - aws s3 mb s3://myreact-s3
