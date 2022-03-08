@@ -5,18 +5,5 @@ pipelines:
     - step:
         name: Build artifact
         script:
-          - mkdir artifact
-          - echo "Pipelines is awesome!" > artifact/index.html
-        artifacts:
-          - artifact/*
-    - step:
-        name: Deploy to S3
-        deployment: production
-        script:
-          - pipe: atlassian/aws-s3-deploy:0.3.8
-            variables:
-              AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
-              AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
-              AWS_DEFAULT_REGION: 'ap-south-1'
-              S3_BUCKET: 'react-example-s3-deploy'
-              LOCAL_PATH: 'artifact'
+           - s3 --region "ap-south-1" rm s3://myreact-bucket
+            - s3 --region "ap-south-1" sync . s3://myreact-bucket
