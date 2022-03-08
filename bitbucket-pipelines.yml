@@ -1,10 +1,15 @@
-image: atlassian/default-image:2
+image: node:12
 
 pipelines:
-  default:
-    - step:
-        name: Build artifact
-        script:
-               - apt-get update && apt-get install -y python3-pip 
-               - pip3 install -U awscli 
-               - /bin/bash deploy.sh
+  branches: # Pipelines that will be triggered when a push is made in the below branch
+    master:
+      - step:
+          name: test
+          script:
+            - pipe: atlassian/aws-sam-deploy:0.5.2
+              variables:
+                AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+                AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+                AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+                S3_BUCKET: "myreact-s3"    
+                CAPABILITIES: ["CAPABILITY_IAM","CAPABILITY_AUTO_EXPAND"]
