@@ -8,7 +8,6 @@ pipelines:
             - npm install
             - npm run test
             - npm run build
-  custom: # Pipeline that only runs manually
     production: 
       - step:
           name: Building the app
@@ -27,6 +26,6 @@ pipelines:
                 AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
                 AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
                 AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
-                S3_BUCKET: "myreact-s3"
+                CREAYE S3_BUCKET: "myreact-s3"
                 ACL: "public-read"
                 LOCAL_PATH: "build"
