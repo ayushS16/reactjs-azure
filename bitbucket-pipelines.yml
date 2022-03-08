@@ -20,4 +20,3 @@ pipelines:
               AWS_DEFAULT_REGION: 'ap-south-1'
               S3_BUCKET: 'react-example-s3-deploy'
               LOCAL_PATH: 'artifact'
-              ACL: 'bucket-owner-full-control'
