@@ -5,5 +5,8 @@ pipelines:
     - step:
         name: Build artifact
         script:
-           - s3 --region "ap-south-1" rm s3://myreact-bucket
-            - s3 --region "ap-south-1" sync . s3://myreact-bucket
+               - apt-get update && apt-get install -y python3-pip 
+               - pip3 install -U awscli 
+               - aws --version
+               - s3 --region "ap-south-1" rm s3://myreact-bucket
+               - s3 --region "ap-south-1" sync . s3://myreact-bucket
